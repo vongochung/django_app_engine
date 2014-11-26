@@ -1,53 +1,30 @@
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
-    xml:lang="{% firstof LANGUAGE_CODE 'en' %}"
-    lang="{% firstof LANGUAGE_CODE 'en' %}">
-  <head>
-    <title>{% block title %}{% endblock %} - Nonrel-testapp</title>
+{% load staticfiles i18n %}
+{% include 'common/homepage/header.html'  %}
+ <title>{% block title %}{% blocktrans %}{% endblocktrans %}{% endblock %}</title>
+</head>
+<body>
+<!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<header>
+  <div class="container menu">
+    <a href="/" id="homelink">
 
-    {% block css %}
+    </a>
+    <ul class="menu-top">         
+          <li><a href="" class="">{% trans "Xem chưa" %}</a></li>
+          <li><a href="/accounts/logout" class="home active">{% trans "Thoát" %}</a></li>
+      </ul>
+    {% block menu %}
     {% endblock %}
-
-    {% block preload_js %}
+  </div>
+</header>
+<div class="container content">
+    {% block content %}
     {% endblock %}
-
-    {% block extra-head %}{% endblock %}
-  </head>
-
-  <body>
-    <div id="header">
-      <a id="logo" href="/">Nonrel-testapp</a>
-    </div>
-
-    <div class="columns">
-      <div id="content" class="column">
-        {% block content-header %}
-          {% if error %}<div class="error">{{ error }}</div>{% endif %}
-          {% if info %}<div class="info">{{ info }}</div>{% endif %}
-          {% if messages %}
-            {% for message in messages %}
-              <div class="info">{{ message }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endblock %}
-
-        {% block content %}{% endblock %}
-      </div>
-
-      <div id="sidebar" class="column">
-        {% block sidebar %}
-        {% endblock %}
-      </div>
-    </div>
-
-    <div id="footer">
-      <p>Powered by <a href="https://github.com/django-nonrel">Django-nonrel</a></p>
-    </div>
-
-    {% block js %}
-    {% endblock %}
-  </body>
+</div>
+{% include 'common/homepage/footer.html'  %}
+{% block js %}
+{% endblock %}
+   </body>
 </html>

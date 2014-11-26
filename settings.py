@@ -4,7 +4,7 @@
 from djangoappengine.settings_base import *
 
 import os
-
+rel = lambda *x: os.path.join(os.path.dirname(os.path.abspath(__file__)), *x)
 # Activate django-dbindexer for the default database
 DATABASES['native'] = DATABASES['default']
 DATABASES['default'] = {'ENGINE': 'dbindexer', 'TARGET': 'native'}
@@ -16,7 +16,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.auth',
-     'django.contrib.messages',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
     'django.contrib.sessions',
     'permission_backend_nonrel',
     'djangotoolbox',
@@ -44,12 +45,24 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
 )
 
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
 # This test runner captures stdout and associates tracebacks with their
 # corresponding output. Helps a lot with print-debugging.
 TEST_RUNNER = 'djangotoolbox.test.CapturingTestSuiteRunner'
 
 STATIC_URL = '/static/'
+STATIC_ROOT = rel('../../staticfiles')
 
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 ROOT_URLCONF = 'urls'
+
+LANGUAGE_CODE = 'vi'
