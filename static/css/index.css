@@ -175,6 +175,7 @@ footer{
     min-height: 50px;
     padding-top: 15px;
     width: 100%;
+    max-width: 100%;
     line-height: 20px !important;
     border:none;
 }

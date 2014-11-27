@@ -25,6 +25,7 @@ INSTALLED_APPS = (
     'autoload',
     'dbindexer',
     'home',
+    'pytz',
 
 
     # djangoappengine should come last, so it can override a few manage.py commands
@@ -72,3 +73,21 @@ LANGUAGE_CODE = 'vi'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 30 * 60 #
+
+# Local time zone for this installation. Choices can be found here:
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+# although not all choices may be available on all operating systems.
+# In a Windows environment this must be set to your system time zone.
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
+
+
+# If you set this to False, Django will make some optimizations so as not
+# to load the internationalization machinery.
+USE_I18N = True
+
+# If you set this to False, Django will not format dates, numbers and
+# calendars according to the current locale.
+USE_L10N = True
+
+# If you set this to False, Django will not use timezone-aware datetimes.
+USE_TZ = True

@@ -2,7 +2,7 @@
 
 {% load staticfiles i18n %}
 {% load humanize %}
-
+{% load tz %}
 {% block content %}
 <div class="col-md-7 col-sm-6 col-xs-12 post">
     <form action="/create-post/" method="POST">
@@ -36,8 +36,8 @@
             <div class="head-img">
                 <img class="profile-img small img-circle " src="{{ post.get_image }}">    
             </div>
-            <span class="head-name">{{ post.author }}</span><span><br/><span>{{post.date|timesince }} </span>
-            <span class="pull-right">{{post.date|naturalday }} - lúc {{post.date|time:"P"  }}</span>
+            <span class="head-name">{{ post.author }}</span><span><br/><span>{{post.date|timesince }} trước</span>
+            <span class="pull-right">{{post.date|naturalday }} - lúc {{ post.translate|time:"P"  }}</span>
         </a>
     </div>
     <div class="title-post">{{ post.content|escape }}</div>
