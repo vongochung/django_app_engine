@@ -18,7 +18,10 @@ urlpatterns = patterns('',
     (r'^jsi18n/$', 'django.views.i18n.javascript_catalog'),
     ('^_ah/warmup$', 'djangoappengine.views.warmup'),
     (r'^$', include('home.urls')),
+    (r'^create-post/$', 'home.views.create_post'),
+    (r'^create-comment/$', 'home.views.create_comment'),
     (r'^accounts/login/$', 'django.contrib.auth.views.login', {"template_name":"home/login.html"}),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {"next_page" : "/"}),
     ('^thongke/', include(admin.site.urls)),
+
 )

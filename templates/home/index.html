@@ -1,40 +1,75 @@
 {% extends "base.html" %}
 
-{% load staticfiles i18n%}
+{% load staticfiles i18n %}
+{% load humanize %}
 
 {% block content %}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-     <script type="text/javascript">
-      google.load("visualization", "1.1", {packages:["bar"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Tháng', 'Chi', 'Tiết kiệm'],
-          ['1', 11000000, 1000000],
-          ['2', 11000000, 1000000],
-          ['3', 11000000, 1000000],
-          ['4', 11000000, 1000000],
-          ['5', 11000000, 1000000],
-          ['6', 11000000, 1000000],
-          ['7', 11000000, 1000000],
-          ['8', 11000000, 1000000],
-          ['9', 11000000, 1000000],
-          ['10', 11000000, 1000000],
-          ['11', 11000000, 5400000],
-          ['12', 11000000, 5400000],
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Thu chi của vợ chồng',
-            subtitle: 'Thống kê chi tiêu + tiết kiệm hàng tháng',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('dual_y_div'));
-
-        chart.draw(data, options);
-      }
-    </script>
-<div id="dual_y_div" style="width: 900px; height: 500px;"></div>
+<div class="col-md-7 col-sm-6 col-xs-12 post">
+    <form action="/create-post/" method="POST">
+    {% csrf_token %}
+        <div class="header-post">
+            <a href="#">
+                <div class="head-img">
+                    <img class="profile-img small img-circle " src="{{ user.get_image }}">    
+                </div>
+                <span class="head-name">{{ user }}</span>
+                <button class="btn btn-success pull-right" id="post-new">{% trans "Đăng" %}</button>
+            </a>
+        </div>
+        <a href="#">
+            <img class="img-responsive lazy" data-original="{% static 'uploads/test.png' %}">
+        </a>
+        <div class="">
+            <div class="mycomment">
+              <textarea name="content" id="content" class="new-comment" placeholder="__{{ user}}{% trans ' đang nghĩ gì?__' %}"></textarea>
+            </div>
+          
+        </div>
+    </form>
+</div>
+<!--End-->
+{% for post in posts %}
+<!--One Post -->
+<div class="col-md-7 col-sm-6 col-xs-6 post">
+    <div class="header-post">
+        <a href="#">
+            <div class="head-img">
+                <img class="profile-img small img-circle " src="{{ post.get_image }}">    
+            </div>
+            <span class="head-name">{{ post.author }}</span><span><br/><span>{{post.date|timesince }} </span>
+            <span class="pull-right">{{post.date|naturalday }} - lúc {{post.date|time:"P"  }}</span>
+        </a>
+    </div>
+    <div class="title-post">{{ post.content|escape }}</div>
+    <a href="#">
+        <img class="img-responsive lazy" data-original="{% static 'uploads/test.png' %}">
+    </a>
+    <div class="comment-block">
+        <div id="{{ post.id }}">
+            {% for comment in post.get_comment %}
+            <!--loop comments-->
+            <div class="comment">
+                <div class="head-img">
+                    <img class="profile-img small img-circle " src="{{ comment.get_image }}">    
+                </div>
+                <span class="head-name">{{comment.author}}</span>
+                <p style="display:inline;padding-right: 15px;">{{ comment.content|escape }}<br/>
+                <span class="comment-time">{{comment.date|timesince }} trước</span>
+                </p>
+            </div>
+            <!--endloop comments-->
+            {% endfor %}
+        </div>
+        <div class="mycomment">
+             <div class="head-img-comment">
+                <img class="profile-img small img-circle " src="{{ user.get_image }}">    
+            </div>
+            <div class="w-comment">
+                <textarea class="m-comment" data-post-id="{{ post.id }}"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Post-->
+{% endfor %}
 {% endblock %}

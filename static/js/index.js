@@ -3,6 +3,7 @@ $(function() {
     //$(window).on("scroll", get_more_post);
     if(window.SIGN_UP) flip_form();    
     $('.m-comment').autosize();
+    $('.new-comment').autosize();
     $('.m-comment').css({"lin-height": "2px!important" }).trigger('autosize.resizeIncludeStyle'); 
 
 });
@@ -30,6 +31,41 @@ $.ajaxSetup({
          }
      }
 });
+
+$('textarea#content').keypress(function(e) {
+    if(e.keyCode == 13 || e.which == 13) {
+        jQuery(this).blur();
+        jQuery('#post-new').click();
+    }
+});
+
+
+$('textarea.m-comment').keypress(function(e) {
+    if((e.keyCode == 13 || e.which == 13) && $(this).val() != "" ){
+        var content = $(this).val(),
+        post_id = $(this).data("post-id");
+        $(this).val("");
+        var data = {
+            "content": content,
+            "post_id": post_id,
+        }
+        $.ajax({
+            url: '/create-comment/',
+            type: 'POST',
+            data: data,
+        })
+        .done(function(data) {        
+            $("#"+post_id).append(data);
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+        });
+        
+    }
+});
+
 
 function loading(btn)
 {
@@ -95,26 +131,6 @@ function get_more_post(){
     documentHeight = $(document).height(),
     content = $(window).height();
     if(scrollAmount == (documentHeight - content)) {
-        $(".content").append('<div class="col-md-7 col-sm-6 col-xs-6 post">'+
-                '<div class="header-post">'+
-                    '<a href="#">'+
-                        '<div class="head-img">'+
-                            '<img class="profile-img small img-circle " src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;f=y">'+
-                        '</div>'+
-                        '<span class="head-name">Võ Ngọc Hưng</span>'+
-                    '</a>'+
-                '</div>'+
-                '<div class="title-post"> Title của bài post Title của bài post Title của bài post Title của bài post Title của bài post</div>'+
-                '<a href="#">'+
-                    '<img class="img-responsive" src="/static/uploads/test2.png">'+
-                '</a>'+
-                '<div class="footer-post">'+
-                    '<a href="#">Thích</a>'+
-                    '<a href="#">Bình luận</a>'+
-                    '<a href="#">Chia sẽ</a>'+
-                '</div>'+
-            '</div>'
-        );
     }
 }
  

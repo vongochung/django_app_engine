@@ -1,0 +1,64 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]--><!-- BEGIN HEAD --><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <meta charset="UTF-8">
+    <title>Trang web của vợ chồng mình | Trang đăng nhập</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="description">
+	<meta content="" name="author">
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <!-- GLOBAL STYLES -->
+     <!-- PAGE LEVEL STYLES -->
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magic.css' %}">
+     <!-- END PAGE LEVEL STYLES -->
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+    <!-- END HEAD -->
+
+    <!-- BEGIN BODY -->
+<body>
+
+   <!-- PAGE CONTENT --> 
+    <div class="container">
+    <div class="tab-content">
+        <div id="login" class="tab-pane active">
+            <form method="post" action="{% url django.contrib.auth.views.login %}" class="form-signin">
+			{% csrf_token %}
+                {% if form.errors %}
+				<div class="alert alert-danger" role="alert">Mật khẩu hoặc tên đăng nhập không đúng</div>
+				{% endif %}
+				<input id="id_username" type="text" name="username" placeholder="Username" class="form-control" maxlength="30">
+                <input type="password" id="id_password" name="password" placeholder="Password" class="form-control">
+				<input type="hidden" name="next" value="{{ next }}" />
+				<div class="text-center">
+					<button class="btn text-muted text-center btn-danger text-center" type="submit">Đăng nhập</button>
+    			</div>
+            </form>
+        </div>
+	</div>
+
+	  <!--END PAGE CONTENT -->     
+	      
+      <!-- PAGE LEVEL SCRIPTS -->
+      <!--END PAGE LEVEL SCRIPTS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-48795421-1', 'binarytheme.com');
+  ga('send', 'pageview');
+</script>
+    <!-- END BODY -->
+
+</body>
+</html>
+

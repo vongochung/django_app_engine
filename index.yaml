@@ -43,3 +43,14 @@ indexes:
   - name: name
   - name: __key__
     direction: desc
+
+- kind: home_comment
+  properties:
+  - name: post_id
+  - name: date
+
+- kind: home_comment
+  properties:
+  - name: post_id
+  - name: date
+    direction: desc

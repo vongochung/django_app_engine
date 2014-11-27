@@ -1,4 +1,5 @@
 body{
+    background-color: #e9eaed;
 }
 .container{
 	max-width: 960px;
@@ -71,97 +72,6 @@ footer{
     padding-top: 60px;
 }
 
-/* Flip Effect */
-.flipper {
-    margin: auto;
-    text-align: center;
-}
-
-.flipper form, .flipper .success {
-    margin: auto;
-    width: 300px;
-    text-align: left;
-}
-
-.flipper, .flipper .face {
-    max-width: 365px;
-}
-
-.flipper, .face {
-    height: 390px;
-}
-
-.flipper .success {
-    text-align: left;
-}
-
-.flipper {
-    z-index: 1;
-    -webkit-perspective: 1000px;
-    -moz-perspective: 1000px;
-    -ms-perspective: 1000px;
-}
-
-.card {
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    
-    -webkit-transition: all .4s ease-in-out;
-    -moz-transition: all .4s ease-in-out;
-    -ms-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-}
-
-.card .face {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-    position: absolute;
-}
-
-.card .face.back {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.card.flipping {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-}
-.front, .back {
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-/* front pane, placed above back */
-.front {
-    z-index: 2;
-    /* for firefox 31 */
-    transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-}
-
-/* back, initially hidden pane */
-.back {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-}
-
-/* End Flip Effect */
-
 /* Loading Animation */
 
 .loading {
@@ -204,6 +114,9 @@ footer{
     border-bottom: 1px solid #ccc;
     color: #141823;
 }
+.header-post a:hover{
+    text-decoration: none;
+}
 .title-post{
     padding-top: 10px;
 }
@@ -229,11 +142,11 @@ footer{
     float: left;
 }
 .comment{
-    margin: 10px 0 10px 0;
+    margin: 10px 5px 10px 0;
 }
 .m-comment{
-    width: 80%;
-    max-width: 80%;
+    width: 85%;
+    max-width: 85%;
     overflow: hidden;
     line-height: 15px !important;
 }
@@ -243,9 +156,32 @@ footer{
     margin-left: 20px;
     display: inline;
 }
-
+.comment-block{
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    background-color: #F7ECEC;
+    border-top: 1px solid #ccc;
+}
+.comment-time{
+    font-size: 9px;
+    font-weight: bold;
+}
 /*====End comment====*/
-
+/*=====new POST======*/
+.new-comment{
+    margin-top: 10px;
+    min-height: 50px;
+    padding-top: 15px;
+    width: 100%;
+    line-height: 20px !important;
+    border:none;
+}
+#post-new{
+    visibility: hidden;
+}
+/*=====end POST====*/
 .ad{
     position: fixed;
     right: 490px;
