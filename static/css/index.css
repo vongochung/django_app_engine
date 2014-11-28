@@ -1,5 +1,7 @@
 body{
-    background-color: #e9eaed;
+    /*background-color: #e9eaed;*/
+    background: url(../images/background-home.jpg)  no-repeat #fff   fixed;
+    background-size: cover;
 }
 .container{
 	max-width: 960px;
@@ -26,52 +28,94 @@ footer{
     float: left;
     background: url('../images/logo.png') no-repeat scroll 3px;
 }
-.menu{
-    min-height: 50px;
-}
-
-.menu-top{
-    height: 100%;
-    vertical-align: middle;
-    margin: 0;
-    float: left;
-    padding-left: 0;
-}
-.menu-top li {
-    height: 100%;
-    color: white;
-    display: inline-block;
-}
-.menu-top li a {
-    display: block;
-    text-align: center;
-    height: 100%;
-    width: 167px;
-    line-height: 50px;
-    color: white;
-    font-weight: normal;
-    background-repeat: no-repeat;
-    background-position: 12px 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 15px;
-    font-weight: bold;
-}
-.menu-top li a:active{
-    background-color: #0457ad;
-}
-
-.menu-top li a:hover{
-    background-color: #318bd8;
-    color: white;
-    text-decoration: none;
-}
 
 .content{
     min-height: 600px;
     padding-top: 60px;
 }
+/*===========Menu==============*/
 
+.logo{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+/*==================Top link========*/
+ul.top-link{
+    list-style: none;
+    margin-top: -5px;
+    padding: 0;
+}
+ul.top-link li{
+    display: inline-block;
+}
+ul.top-link li a{
+    color: #000;
+    font-size: 12px;
+
+}
+ul.top-link li span{
+    margin: -10px 10px 0px 10px;
+    display: inline-block;
+    font-size: 10px;
+}
+
+.top-nav-right:hover,
+.top-nav-right{
+    color: #6a6b6b;
+    margin-top: 5px;
+    margin-right: 20px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.button-discover{
+    font-size: 18px !important;
+    margin-top: 10px;
+    background-color: #14cccc !important;
+    padding:2px 5px 5px 15px;
+}
+
+.btn-join-team{
+    margin-top: 20px !important;
+    padding: 5px 5px !important;
+}
+.button-cart:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.gr-top-right{
+    margin-right: 30px;
+}
+/*=================Main menu=========*/
+ul.main a {
+    font-size: 16px;
+    text-align: center;
+}
+nav.navbar-inverse {
+    background-color: #0073C6;
+}
+.navbar-inverse {
+    border-color: #080808;
+    background-color:none !important;
+}
+ul.navbar-nav {
+    margin-top: -48px;
+    margin-left: 100px;
+
+}
+.menu-top a{
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.navbar-inverse .navbar-nav>li{
+    padding-right: 4px;
+}
+.navbar-inverse .navbar-nav>li>a,
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #fff;
+    
+}
 /* Loading Animation */
 
 .loading {
@@ -90,13 +134,6 @@ footer{
 /*====form-sign===*/
 .form-sign ul li{
 	list-style: none;
-}
-/*======signup======*/
-.nt-logo{
-	background-image: url("../images/dk.png");
-	height: 288px;
-	margin-top: 15px;
-	width: 320px;
 }
 /*====post===*/
 .ad,
@@ -161,7 +198,7 @@ footer{
     margin-right: -15px;
     padding-left: 15px;
     padding-top: 15px;
-    background-color: #F7ECEC;
+    background-color: #F6F7F8;
     border-top: 1px solid #ccc;
 }
 .comment-time{
@@ -253,4 +290,29 @@ footer ul li{
     top:10px;
     right: 8px;
     box-shadow:none;
+}
+
+@media screen and (max-width: 800px){
+    .content{
+        padding-top: 70px;
+    }
+    .m-comment{
+        max-width: 75%;
+    }
+    ul.navbar-nav {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .navbar-toggle {
+        margin-top: -25px;
+        margin-right: -30px;
+    }
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        border-color: #fff;
+    }
+    .time-post{
+        float: none !important;
+        display: block;
+        width: 100%;
+    }
 }

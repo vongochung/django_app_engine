@@ -2,14 +2,14 @@
 {% load humanize %}
 {% load tz %}
 <!--One Post -->
-<div class="col-md-7 col-sm-6 col-xs-6 post">
+<div class="col-md-7 col-sm-12 col-xs-12 post">
     <div class="header-post">
         <a href="#">
             <div class="head-img">
                 <img class="profile-img small img-circle " src="{{ post.get_image }}">    
             </div>
             <span class="head-name">{{ post.author }}</span><span><br/><span>{{post.date|timesince }} trước</span>
-            <span class="pull-right">{{post.date|naturalday }} - lúc {{ post.translate|time:"P"  }}</span>
+            <span class="pull-right time-post">{{post.date|naturalday }} - lúc {{ post.translate|time:"P"  }}</span>
         </a>
     </div>
     <div class="title-post">{{ post.content|escape }}</div>
@@ -32,7 +32,7 @@
                 <img class="profile-img small img-circle " src="{{ user.get_image }}">    
             </div>
             <div class="w-comment">
-                <textarea class="m-comment" data-post-id="{{ post.id }}"></textarea>
+                <textarea class="m-comment" onkeypress="addComment(e)" data-post-id="{{ post.id }}"></textarea>
             </div>
         </div>
     </div>

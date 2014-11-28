@@ -6,7 +6,7 @@
 <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<header>
+<!--<header>
   <div class="container menu">
     <a href="/" id="homelink">
 
@@ -20,6 +20,40 @@
     {% block menu %}
     {% endblock %}
   </div>
+</header>
+-->
+<header id="header">
+    <div class="container top">
+        <div class="col-md-8 menu-top">
+            <a href="/" ><img src="{% static 'images/logo.png' %}"></a>
+            <div class="menu">
+                <div class="container">
+                    <nav class="navbar-inverse">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse" id="main-menu">
+                                <ul class="nav navbar-nav main">
+                                    <li><a href="#">{% trans "Tài chính" %}</a></li>
+                                    <li><a href="#">{% trans "Ảnh" %}</a></li>
+                                    <li><a href="#">{% trans "Video" %}</a></li>
+                                    <li><a href="{% url django.contrib.auth.views.logout %}">{% trans "Thoát" %}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>            
 </header>
 <div class="container content">
     {% block content %}

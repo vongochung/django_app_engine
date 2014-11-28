@@ -37,8 +37,19 @@ $('textarea#content').keypress(function(e) {
     }
 });
 
+function addPost(e){
+    if(e.keyCode == 13 || e.which == 13) {
+        jQuery(this).blur();
+        jQuery('#post-new').click();
+    }
+}
+
 $(document).on("keypress","textarea.m-comment",function(e) {
-     if((e.keyCode == 13 || e.which == 13) && $(this).val() != "" ){
+    addComment(e);
+});
+
+function addComment(e){
+    if((e.keyCode == 13 || e.which == 13) && $(this).val() != "" ){
         var content = $(this).val(),
         post_id = $(this).data("post-id");
         $(this).val("");
@@ -61,8 +72,7 @@ $(document).on("keypress","textarea.m-comment",function(e) {
         });
         
     }
-
-});
+}
 
 function loading(btn)
 {
@@ -104,7 +114,7 @@ $(document).on("click",".viewmore-post",function(e) {
         console.log("error");
     })
     .always(function() {
-        $ele.remove();
+        $ele.parent().remove();
     });
         
 });

@@ -4,7 +4,7 @@
 {% load humanize %}
 {% load tz %}
 {% block content %}
-<div class="col-md-7 col-sm-6 col-xs-12 post">
+<div class="col-md-7 col-sm-12 col-xs-12 post">
     <form action="/create-post/" method="POST">
     {% csrf_token %}
         <div class="header-post">
@@ -21,7 +21,7 @@
         </a>
         <div class="">
             <div class="mycomment">
-              <textarea name="content" id="content" class="new-comment" placeholder="__{{ user}}{% trans ' đang nghĩ gì?__' %}"></textarea>
+              <textarea name="content" onkeypress="addPost(e)" id="content" class="new-comment" placeholder="__{{ user}}{% trans ' đang nghĩ gì?__' %}"></textarea>
             </div>
           
         </div>
@@ -36,7 +36,7 @@
 
 
 {% if posts.has_next %}
-<div class="col-md-7 col-sm-6 col-xs-6 post next-post">
+<div class="col-md-7 col-sm-12 col-xs-12 post next-post">
     <a href="javascript:void(0)" class="viewmore-post" data-page="{{ posts.next_page_number}}">{% trans "Xem thêm" %}</a>
 </div>
 {% endif %}
