@@ -1,5 +1,5 @@
 $(function() {
-    //$(window).on("scroll", get_more_post);
+    $(window).on("scroll", get_more_post);
     $('.m-comment').autosize();
     $('.new-comment').autosize();
     $('.m-comment').css({"lin-height": "2px!important" }).trigger('autosize.resizeIncludeStyle'); 
@@ -82,8 +82,33 @@ function get_more_post(){
     documentHeight = $(document).height(),
     content = $(window).height();
     if(scrollAmount == (documentHeight - content)) {
+        $(".viewmore-post").click();
     }
 }
+
+$(document).on("click",".viewmore-post",function(e) {
+    var $ele = $(this);
+    loading($ele)
+    var page = $(this).data("page");
+    var data = {
+        "page": page
+    }
+    $.ajax({
+        url: '/get-posts/',
+        type: 'POST',
+        data: data,
+    })
+    .done(function(data) {        
+        $("#post-wrap").append(data);
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        $ele.remove();
+    });
+        
+});
  
 $(document).on("click",".viewmore-comment",function(e) {
     var $ele = $(this);

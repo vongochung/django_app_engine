@@ -28,43 +28,17 @@
     </form>
 </div>
 <!--End-->
+<div id="post-wrap">
 {% for post in posts %}
-<!--One Post -->
-<div class="col-md-7 col-sm-6 col-xs-6 post">
-    <div class="header-post">
-        <a href="#">
-            <div class="head-img">
-                <img class="profile-img small img-circle " src="{{ post.get_image }}">    
-            </div>
-            <span class="head-name">{{ post.author }}</span><span><br/><span>{{post.date|timesince }} trước</span>
-            <span class="pull-right">{{post.date|naturalday }} - lúc {{ post.translate|time:"P"  }}</span>
-        </a>
-    </div>
-    <div class="title-post">{{ post.content|escape }}</div>
-    <a href="#">
-        <img class="img-responsive lazy" data-original="{% static 'uploads/test.png' %}">
-    </a>
-    <div class="comment-block">
-        <div id="{{ post.id }}">
-            {% with comments=post.get_comment %}
-                {% if post.has_next %}
-                    <a href="javascript:void(0)" class="viewmore-comment" data-page="{{ post.next_page}}" data-post-id="{{ post.id }}">{% trans "Xem thêm" %}</a>
-                {% endif %}
-                {% for comment in comments %}
-                    {% include 'comment/one_comment.html' %}
-                {% endfor %}
-            {% endwith %}
-        </div>
-        <div class="mycomment">
-             <div class="head-img-comment">
-                <img class="profile-img small img-circle " src="{{ user.get_image }}">    
-            </div>
-            <div class="w-comment">
-                <textarea class="m-comment" data-post-id="{{ post.id }}"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End Post-->
+    {% include "post/one_post.html" %}
 {% endfor %}
+</div>
+
+
+{% if posts.has_next %}
+<div class="col-md-7 col-sm-6 col-xs-6 post next-post">
+    <a href="javascript:void(0)" class="viewmore-post" data-page="{{ posts.next_page_number}}">{% trans "Xem thêm" %}</a>
+</div>
+{% endif %}
+
 {% endblock %}
