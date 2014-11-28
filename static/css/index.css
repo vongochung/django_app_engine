@@ -178,6 +178,9 @@ footer{
     text-decoration: none;
     padding: 5px;
 }
+.viewmore-post{
+    text-align: center;
+}
 /*====End comment====*/
 /*=====new POST======*/
 .new-comment{

@@ -37,9 +37,8 @@ $('textarea#content').keypress(function(e) {
     }
 });
 
-
-$('textarea.m-comment').keypress(function(e) {
-    if((e.keyCode == 13 || e.which == 13) && $(this).val() != "" ){
+$(document).on("keypress","textarea.m-comment",function(e) {
+     if((e.keyCode == 13 || e.which == 13) && $(this).val() != "" ){
         var content = $(this).val(),
         post_id = $(this).data("post-id");
         $(this).val("");
@@ -62,8 +61,8 @@ $('textarea.m-comment').keypress(function(e) {
         });
         
     }
-});
 
+});
 
 function loading(btn)
 {
