@@ -46,19 +46,14 @@
     </a>
     <div class="comment-block">
         <div id="{{ post.id }}">
-            {% for comment in post.get_comment %}
-            <!--loop comments-->
-            <div class="comment">
-                <div class="head-img">
-                    <img class="profile-img small img-circle " src="{{ comment.get_image }}">    
-                </div>
-                <span class="head-name">{{comment.author}}</span>
-                <p style="display:inline;padding-right: 15px;">{{ comment.content|escape }}<br/>
-                <span class="comment-time">{{comment.date|timesince }} trước</span>
-                </p>
-            </div>
-            <!--endloop comments-->
-            {% endfor %}
+            {% with comments=post.get_comment %}
+                {% if post.has_next %}
+                    <a href="javascript:void(0)" class="viewmore-comment" data-page="{{ post.next_page}}" data-post-id="{{ post.id }}">{% trans "Xem thêm" %}</a>
+                {% endif %}
+                {% for comment in comments %}
+                    {% include 'comment/one_comment.html' %}
+                {% endfor %}
+            {% endwith %}
         </div>
         <div class="mycomment">
              <div class="head-img-comment">

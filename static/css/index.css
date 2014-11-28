@@ -168,6 +168,16 @@ footer{
     font-size: 9px;
     font-weight: bold;
 }
+.viewmore-comment,
+.viewmore-comment:hover{
+    display: block;
+    text-align: center;
+    background-color: #DBD9E0;
+    margin-left: -15px;
+    height: 30px;
+    text-decoration: none;
+    padding: 5px;
+}
 /*====End comment====*/
 /*=====new POST======*/
 .new-comment{

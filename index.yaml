@@ -44,6 +44,18 @@ indexes:
   - name: __key__
     direction: desc
 
+- kind: auth_user
+  properties:
+  - name: username
+    direction: desc
+  - name: __key__
+    direction: desc
+
+- kind: home_comment
+  properties:
+  - name: __key__
+    direction: desc
+
 - kind: home_comment
   properties:
   - name: post_id
@@ -53,4 +65,51 @@ indexes:
   properties:
   - name: post_id
   - name: date
+    direction: desc
+
+- kind: home_post
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: home_taichinh
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: home_taichinh
+  properties:
+  - name: chi
+  - name: date
+  - name: __key__
+    direction: desc
+
+- kind: home_taichinh
+  properties:
+  - name: content
+  - name: money
+  - name: chi
+  - name: date
+  - name: __key__
+    direction: desc
+
+- kind: home_taichinh
+  properties:
+  - name: date
+  - name: __key__
+    direction: desc
+
+- kind: home_taichinh
+  properties:
+  - name: date
+    direction: desc
+  - name: __key__
+    direction: desc
+
+- kind: home_taichinh
+  properties:
+  - name: money
+  - name: chi
+  - name: date
+  - name: __key__
     direction: desc
