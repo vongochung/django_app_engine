@@ -32,7 +32,7 @@
                 <img class="profile-img small img-circle " src="{{ user.get_image }}">    
             </div>
             <div class="w-comment">
-                <textarea class="m-comment" onkeypress="addComment(e)" data-post-id="{{ post.id }}"></textarea>
+                <textarea class="m-comment" onkeypress="addComment(event, this)" data-post-id="{{ post.id }}"></textarea>
             </div>
         </div>
     </div>

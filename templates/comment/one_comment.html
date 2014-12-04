@@ -5,7 +5,7 @@
     <div class="head-img">
         <img class="profile-img small img-circle " src="{{ comment.get_image }}">    
     </div>
-    <span class="head-name">{{user}}</span>
+    <span class="head-name">{{comment.author}}</span>
     <p style="display:inline;padding-right: 15px;">{{ comment.content|escape }}<br/>
     <span class="comment-time">{{comment.date|timesince }} trước</span>
     </p>

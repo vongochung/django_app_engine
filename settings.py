@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = (
 )
 MIDDLEWARE_CLASSES = (
     # This loads the index definitions, so it has to come first
+    'django.middleware.gzip.GZipMiddleware',
     'autoload.middleware.AutoloadMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -64,8 +65,13 @@ TEST_RUNNER = 'djangotoolbox.test.CapturingTestSuiteRunner'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = rel('../../staticfiles')
+STATICFILES_DIRS = (
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'static/'),
+)
 
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
+
 
 ROOT_URLCONF = 'urls'
 

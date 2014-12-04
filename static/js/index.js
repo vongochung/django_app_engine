@@ -30,12 +30,6 @@ $.ajaxSetup({
      }
 });
 
-$('textarea#content').keypress(function(e) {
-    if(e.keyCode == 13 || e.which == 13) {
-        jQuery(this).blur();
-        jQuery('#post-new').click();
-    }
-});
 
 function addPost(e){
     if(e.keyCode == 13 || e.which == 13) {
@@ -44,15 +38,12 @@ function addPost(e){
     }
 }
 
-$(document).on("keypress","textarea.m-comment",function(e) {
-    addComment(e);
-});
 
-function addComment(e){
-    if((e.keyCode == 13 || e.which == 13) && $(this).val() != "" ){
-        var content = $(this).val(),
-        post_id = $(this).data("post-id");
-        $(this).val("");
+function addComment(e, element){
+    $this = element;
+    if((e.keyCode == 13 || e.which == 13) && $this.value != "" ){
+        var content = $this.value,
+        post_id = $this.getAttribute("data-post-id");
         var data = {
             "content": content,
             "post_id": post_id,
@@ -69,6 +60,7 @@ function addComment(e){
             console.log("error");
         })
         .always(function() {
+            $this.value= "";
         });
         
     }

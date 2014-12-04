@@ -1,7 +1,7 @@
 body{
-    /*background-color: #e9eaed;*/
-    background: url(../images/background-home.jpg)  no-repeat #fff   fixed;
-    background-size: cover;
+    background-color: #e9eaed;
+    /*background: url(../images/background-home.jpg)  no-repeat #fff   fixed;
+    background-size: cover;*/
 }
 .container{
 	max-width: 960px;
@@ -14,7 +14,10 @@ header {
 }
 header,
 .menu{
-    background-color: #0073c6;
+
+    /*kuve-background-color: #0073c6;*/
+    background-color: #3a5795;
+    
 }
 
 header,
@@ -92,7 +95,7 @@ ul.main a {
     text-align: center;
 }
 nav.navbar-inverse {
-    background-color: #0073C6;
+    background-color: #3a5795;
 }
 .navbar-inverse {
     border-color: #080808;
