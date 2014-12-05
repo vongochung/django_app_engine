@@ -3,7 +3,6 @@ $(function() {
     $('.m-comment').autosize();
     $('.new-comment').autosize();
     $('.m-comment').css({"lin-height": "2px!important" }).trigger('autosize.resizeIncludeStyle'); 
-
 });
 
 $.ajaxSetup({
@@ -29,7 +28,6 @@ $.ajaxSetup({
          }
      }
 });
-
 
 function addPost(e){
     if(e.keyCode == 13 || e.which == 13) {

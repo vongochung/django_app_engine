@@ -3,25 +3,6 @@
  <title>{% block title %}{% blocktrans %}{% endblocktrans %}{% endblock %}</title>
 </head>
 <body>
-<!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-<!--<header>
-  <div class="container menu">
-    <a href="/" id="homelink">
-
-    </a>
-    <ul class="menu-top">         
-          <li><a href="" class="">{% trans "Tài chính" %}</a></li>
-          <li><a href="" class="">{% trans "Chồng" %}</a></li>
-          <li><a href="" class="">{% trans "Vợ" %}</a></li>
-          <li><a href="/accounts/logout" class="home active">{% trans "Thoát" %}</a></li>
-      </ul>
-    {% block menu %}
-    {% endblock %}
-  </div>
-</header>
--->
 <header id="header">
     <div class="container top">
         <div class="col-md-8 menu-top">
@@ -44,6 +25,7 @@
                                 <ul class="nav navbar-nav main">
                                     <li><a href="#">{% trans "Ảnh" %}</a></li>
                                     <li><a href="#">{% trans "Video" %}</a></li>
+                                    <li><a href="/thongke/password_change">{% trans "Đổi mật khẩu" %}</a></li>
                                     <li><a href="{% url django.contrib.auth.views.logout %}">{% trans "Thoát" %}</a></li>
                                 </ul>
                             </div>
